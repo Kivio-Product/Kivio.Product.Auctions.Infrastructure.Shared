@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"time"
 
-	domain "github.com/Kivio-Product/Kivio.Product.Auctions.Users/internal/domain/integrations"
+	domain "github.com/Kivio-Product/Kivio.Product.Auctions.Domain.Shared/integration"
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/dynamodb"

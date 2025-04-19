@@ -6,7 +6,7 @@ require (
 	cloud.google.com/go/auth v0.16.0 // indirect
 	cloud.google.com/go/auth/oauth2adapt v0.2.8 // indirect
 	cloud.google.com/go/compute/metadata v0.6.0 // indirect
-	github.com/Kivio-Product/Kivio.Product.Auctions.Domain.Shared v0.1.1 // indirect
+	github.com/Kivio-Product/Kivio.Product.Auctions.Domain.Shared v0.1.3 // indirect
 	github.com/aws/aws-sdk-go v1.55.6 // indirect
 	github.com/felixge/httpsnoop v1.0.4 // indirect
 	github.com/go-logr/logr v1.4.2 // indirect
