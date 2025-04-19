@@ -9,7 +9,7 @@ import (
 	"regexp"
 	"strings"
 
-	shareddomain "github.com/Kivio-Product/Kivio.Product.Auctions.Offers/internal/domain/shared"
+	offer "github.com/Kivio-Product/Kivio.Product.Auctions.Offers/shared/domain"
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/s3"
@@ -17,7 +17,7 @@ import (
 )
 
 type IEmailSender interface {
-	SendEmail(ctx context.Context, offer *shareddomain.Offer, auctionURL string) error
+	SendEmail(ctx context.Context, offer *offer.Offer, auctionURL string) error
 }
 
 type SESEmailSender struct {
@@ -116,7 +116,7 @@ func (s *SESEmailSender) getTemplate(ctx context.Context) (string, error) {
 	return string(body), nil
 }
 
-func (s *SESEmailSender) SendEmail(ctx context.Context, offer *shareddomain.Offer, auctionURL string) error {
+func (s *SESEmailSender) SendEmail(ctx context.Context, offer *offer.Offer, auctionURL string) error {
 	if s.sesClient == nil {
 		return fmt.Errorf("SES client is not initialized")
 	}
