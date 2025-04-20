@@ -5,17 +5,14 @@ import (
 	"fmt"
 	"os"
 
+	domain "github.com/Kivio-Product/Kivio.Product.Auctions.Domain.Shared/sheets"
 	"golang.org/x/oauth2/google"
 	"google.golang.org/api/sheets/v4"
 )
 
-type SheetData struct {
-	Values [][]interface{}
-}
-
 type GoogleSheetsRepository interface {
 	ConnectToSheet(spreadsheetID string, readRange string) error
-	GetSheetData() (SheetData, error)
+	GetSheetData() (domain.SheetData, error)
 }
 
 type googleSheetsRepository struct {
@@ -56,19 +53,19 @@ func (r *googleSheetsRepository) ConnectToSheet(spreadsheetID string, readRange 
 	return nil
 }
 
-func (r *googleSheetsRepository) GetSheetData() (SheetData, error) {
+func (r *googleSheetsRepository) GetSheetData() (domain.SheetData, error) {
 	if r.service == nil || r.spreadsheetID == "" || r.readRange == "" {
-		return SheetData{}, fmt.Errorf("Google Sheets not connected. Please call ConnectToSheet first")
+		return domain.SheetData{}, fmt.Errorf("Google Sheets not connected. Please call ConnectToSheet first")
 	}
 
 	ctx := context.Background()
 
 	resp, err := r.service.Spreadsheets.Values.Get(r.spreadsheetID, r.readRange).Context(ctx).Do()
 	if err != nil {
-		return SheetData{}, fmt.Errorf("unable to retrieve data from sheet: %v", err)
+		return domain.SheetData{}, fmt.Errorf("unable to retrieve data from sheet: %v", err)
 	}
 
 	fmt.Printf("Successfully read data from sheet: %v\n", resp.Values)
 
-	return SheetData{Values: resp.Values}, nil
+	return domain.SheetData{Values: resp.Values}, nil
 }

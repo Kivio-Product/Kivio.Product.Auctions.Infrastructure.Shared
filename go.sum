@@ -10,6 +10,8 @@ github.com/Kivio-Product/Kivio.Product.Auctions.Domain.Shared v0.1.1 h1:28Tmfoq1
 github.com/Kivio-Product/Kivio.Product.Auctions.Domain.Shared v0.1.1/go.mod h1:HW3juk1MW6i48YslNWqXEdD3LnlRJ9mV79MMxN3iGuE=
 github.com/Kivio-Product/Kivio.Product.Auctions.Domain.Shared v0.1.3 h1:F3oXee56JtbeRX5OQnroGxvfuQNZBQqBNGYIZN3/eOc=
 github.com/Kivio-Product/Kivio.Product.Auctions.Domain.Shared v0.1.3/go.mod h1:HW3juk1MW6i48YslNWqXEdD3LnlRJ9mV79MMxN3iGuE=
+github.com/Kivio-Product/Kivio.Product.Auctions.Domain.Shared v0.1.4 h1:jFQeslCbmkDtedwp4hIQt4jXZzYNHaEF62DbjQTQj84=
+github.com/Kivio-Product/Kivio.Product.Auctions.Domain.Shared v0.1.4/go.mod h1:HW3juk1MW6i48YslNWqXEdD3LnlRJ9mV79MMxN3iGuE=
 github.com/aws/aws-sdk-go v1.55.6 h1:cSg4pvZ3m8dgYcgqB97MrcdjUmZ1BeMYKUxMMB89IPk=
 github.com/aws/aws-sdk-go v1.55.6/go.mod h1:eRwEWoyTWFMVYVQzKMNHWP5/RV4xIUGMQfXQHfHkpNU=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
