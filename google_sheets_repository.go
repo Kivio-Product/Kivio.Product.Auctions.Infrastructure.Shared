@@ -56,6 +56,24 @@ func (r *googleSheetsRepository) GetSheetData(spreadsheetID string, readRange st
 
 	ctx := context.Background()
 
+	credentialsJSON, err := os.ReadFile("credentials.json")
+	if err != nil {
+		return domain.SheetData{}, fmt.Errorf("unable to read client secret file: %v", err)
+	}
+
+	config, err := google.JWTConfigFromJSON(credentialsJSON, sheets.SpreadsheetsReadonlyScope)
+	if err != nil {
+		return domain.SheetData{}, fmt.Errorf("unable to parse client secret file to config: %v", err)
+	}
+
+	client := config.Client(ctx)
+	srv, err := sheets.New(client)
+	if err != nil {
+		return domain.SheetData{}, fmt.Errorf("unable to create Sheets client: %v", err)
+	}
+
+	r.service = srv
+
 	resp, err := r.service.Spreadsheets.Values.Get(spreadsheetID, readRange).Context(ctx).Do()
 	if err != nil {
 		return domain.SheetData{}, fmt.Errorf("unable to retrieve data from sheet: %v", err)
