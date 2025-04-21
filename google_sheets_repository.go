@@ -44,7 +44,6 @@ func (r *googleSheetsRepository) ConnectToSheet(spreadsheetID string, readRange 
 		return fmt.Errorf("unable to create Sheets client: %v", err)
 	}
 
-	// Save connection data
 	r.service = srv
 	r.spreadsheetID = spreadsheetID
 	r.readRange = readRange
@@ -54,9 +53,6 @@ func (r *googleSheetsRepository) ConnectToSheet(spreadsheetID string, readRange 
 }
 
 func (r *googleSheetsRepository) GetSheetData(spreadsheetID string, readRange string) (domain.SheetData, error) {
-	if r.service == nil || r.spreadsheetID == "" || r.readRange == "" {
-		return domain.SheetData{}, fmt.Errorf("Google Sheets not connected. Please call ConnectToSheet first")
-	}
 
 	ctx := context.Background()
 
