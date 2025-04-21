@@ -12,7 +12,7 @@ import (
 
 type GoogleSheetsRepository interface {
 	ConnectToSheet(spreadsheetID string, readRange string) error
-	GetSheetData() (domain.SheetData, error)
+	GetSheetData(spreadsheetID string, readRange string) (domain.SheetData, error)
 }
 
 type googleSheetsRepository struct {
@@ -53,14 +53,14 @@ func (r *googleSheetsRepository) ConnectToSheet(spreadsheetID string, readRange 
 	return nil
 }
 
-func (r *googleSheetsRepository) GetSheetData() (domain.SheetData, error) {
+func (r *googleSheetsRepository) GetSheetData(spreadsheetID string, readRange string) (domain.SheetData, error) {
 	if r.service == nil || r.spreadsheetID == "" || r.readRange == "" {
 		return domain.SheetData{}, fmt.Errorf("Google Sheets not connected. Please call ConnectToSheet first")
 	}
 
 	ctx := context.Background()
 
-	resp, err := r.service.Spreadsheets.Values.Get(r.spreadsheetID, r.readRange).Context(ctx).Do()
+	resp, err := r.service.Spreadsheets.Values.Get(spreadsheetID, readRange).Context(ctx).Do()
 	if err != nil {
 		return domain.SheetData{}, fmt.Errorf("unable to retrieve data from sheet: %v", err)
 	}
