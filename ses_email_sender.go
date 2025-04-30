@@ -7,6 +7,7 @@ import (
 	"io"
 	"os"
 	"regexp"
+	"strconv"
 	"strings"
 
 	offer "github.com/Kivio-Product/Kivio.Product.Auctions.Domain.Shared/offer"
@@ -153,7 +154,7 @@ func (s *SESEmailSender) SendEmail(ctx context.Context, offer *offer.Offer, auct
 		body := strings.ReplaceAll(template, "{{OFFER_NAME}}", offer.Name)
 		body = strings.ReplaceAll(body, "{{OFFER_DESCRIPTION}}", offer.Description)
 		body = strings.ReplaceAll(body, "{{DISCOUNT}}", "50%")
-		body = strings.ReplaceAll(body, "{{EXPIRATION_DATE}}", offer.ExpireAt.Format("02/01/2006"))
+		body = strings.ReplaceAll(body, "{{AUCTION_TIME}}", strconv.FormatInt(offer.AuctionTime, 10))
 		body = strings.ReplaceAll(body, "{{AUCTION_URL}}", personalizedURL)
 
 		subject := fmt.Sprintf("🔥 Oferta Especial: %s", offer.Name)

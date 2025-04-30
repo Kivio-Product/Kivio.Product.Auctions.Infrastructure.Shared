@@ -3,7 +3,7 @@ module github.com/Kivio-Product/Kivio.Product.Auctions.Infrastructure.Shared
 go 1.23.3
 
 require (
-	github.com/Kivio-Product/Kivio.Product.Auctions.Domain.Shared v0.1.5
+	github.com/Kivio-Product/Kivio.Product.Auctions.Domain.Shared v0.1.6
 	github.com/aws/aws-sdk-go v1.55.6
 	golang.org/x/oauth2 v0.29.0
 	google.golang.org/api v0.229.0
